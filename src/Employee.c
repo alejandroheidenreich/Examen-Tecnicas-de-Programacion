@@ -21,7 +21,7 @@ void HardCodeEmployeeList(eEmployee* list, int length){
 	AddNewEmployee(list,length,5,"Orlan","Luna",28,'M',3,225199.99);
 	AddNewEmployee(list,length,6,"Martina","Du Fray",40,'F',9,155388.65);
 	AddNewEmployee(list,length,7,"Alengtha","Bonifas",58,'F',21,248276.45);
-	AddNewEmployee(list,length,8,"Ingmar","Naisbet",45,'M',15,144270.00);
+	AddNewEmployee(list,length,8,"Ingmar","Long",45,'M',15,144270.00);
 	AddNewEmployee(list,length,9,"Cathi","Swinney",26,'X',6,227479.65);
 	AddNewEmployee(list,length,10,"Roman","Clarke",27,'M',9,137852.33);
 	AddNewEmployee(list,length,11,"Lynnelle","Rembrant",59,'F',6,203352.77);
@@ -176,7 +176,7 @@ void ShowEmployeeByLastname(eEmployee* list, int length){
 	if(list != NULL && length > 0){
 		InputString("Ingrese apellido:\n", lastname);
 		for(int i=0; i<length; i++){
-			if(strcmp(list[i].lastname,lastname) == 0){
+			if(strcmp(tolower(list[i].lastname),tolower(lastname)) == 0){
 				found = 1;
 				ShowEmployeeByID(list, i);
 			}
