@@ -176,9 +176,10 @@ void ShowEmployeeByLastname(eEmployee* list, int length){
 	if(list != NULL && length > 0){
 		InputString("Ingrese apellido:\n", lastname);
 		for(int i=0; i<length; i++){
-			if(strcmp(tolower(list[i].lastname),tolower(lastname)) == 0){
+			if(stricmp(list[i].lastname,lastname) == 0){
 				found = 1;
 				ShowEmployeeByID(list, i);
+				printf("Anio de jubilacion: %d\n\n",2022+(60-list[i].age));
 			}
 		}
 	}
