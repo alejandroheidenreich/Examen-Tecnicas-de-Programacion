@@ -8,7 +8,7 @@ GO
 -- B
 CREATE TABLE Camioneros (
 	--C
-	Id_Camioneros INT IDENTITY(1,1) NOT NULL,
+	Id_Camioneros INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	Nombre VARCHAR(50),
 	Direccion VARCHAR(50),
 	Telefono VARCHAR(50),
@@ -19,7 +19,7 @@ SELECT * FROM Camioneros
 
 CREATE TABLE Camiones (
 	--C
-	Matricula INT NOT NULL,
+	Matricula INT NOT NULL PRIMARY KEY,
 	Marca VARCHAR(50),
 	Modelo VARCHAR(50),
 	Potencia VARCHAR(50),
@@ -30,28 +30,28 @@ SELECT * FROM Camiones
 
 CREATE TABLE Paquete (
 	--C
-	Id_Paquete INT IDENTITY NOT NULL,
+	Id_Paquete INT IDENTITY NOT NULL PRIMARY KEY,
 	Descripcion VARCHAR(50),
 	Destinatario VARCHAR(50),
 	Direccion VARCHAR(50),
-	Id_Camioneros INT,
-	Id_Ciudades INT
+	Id_Camioneros INT FOREIGN KEY REFERENCES Camioneros(Id_Camioneros),
+	Id_Ciudades INT FOREIGN KEY REFERENCES Ciudades(Id_Ciudades)
 );
 
 SELECT * FROM Paquete
 
 CREATE TABLE Detalle_De_Paquetes (
 	--C
-	Id_Detalle_De_Paquetes INT IDENTITY(1,1) NOT NULL,
-	Id_Camioneros INT,
-	Matricula INT
+	Id_Detalle_De_Paquetes INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Id_Camioneros INT FOREIGN KEY REFERENCES Camioneros(Id_Camioneros),
+	Matricula INT FOREIGN KEY REFERENCES Camiones(Matricula)
 );
 
 SELECT * FROM Detalle_De_Paquetes
 
 CREATE TABLE Ciudades(
 	--C
-	Id_Ciudades INT IDENTITY(1,1) NOT NULL,
+	Id_Ciudades INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	nombre VARCHAR(50)
 );
 
